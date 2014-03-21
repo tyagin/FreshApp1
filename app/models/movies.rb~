@@ -1,4 +1,0 @@
-####  Create
-starwars = Movies.create!(:title => 'Star Wars',
-  :release_date => '25/4/1977', :rating => 'PG')
-

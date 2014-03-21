@@ -28639,3 +28639,75 @@ Processing by MoviesController#index as HTML
   [1m[35mMovie Load (0.7ms)[0m  SELECT "movies".* FROM "movies"
   Rendered movies/index.html.haml (50.3ms)
 Completed 200 OK in 166ms (Views: 104.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2014-03-21 17:27:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.6ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.haml (90.7ms)
+Completed 200 OK in 278ms (Views: 183.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/movies/11" for 127.0.0.1 at 2014-03-21 17:27:25 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", "11"]]
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. (called from _app_views_movies_show_html_haml__862748749_86278770 at /home/bhawna/fresh-tomato1/app/views/movies/show.html.haml:21)
+  Rendered movies/show.html.haml (14.9ms)
+Completed 200 OK in 41ms (Views: 32.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/movies/11/edit" for 127.0.0.1 at 2014-03-21 17:27:28 -0400
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mMovie Load (0.4ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", "11"]]
+  Rendered movies/edit.html.haml (209.5ms)
+Completed 200 OK in 232ms (Views: 220.3ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/movies/11" for 127.0.0.1 at 2014-03-21 17:27:35 -0400
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V1cw21V11YVEiKbag0IhwC/hOzOmjT6xyyzQSj/x0kY=", "movie"=>{"title"=>"Th", "rating"=>"PG", "release_date(1i)"=>"2013", "release_date(2i)"=>"4", "release_date(3i)"=>"2", "description"=>""}, "commit"=>"Update Movie", "id"=>"11"}
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", "11"]]
+  [1m[35m (9.7ms)[0m  begin transaction
+  [1m[36mMovie Exists (7.6ms)[0m  [1mSELECT 1 AS one FROM "movies" WHERE ("movies"."title" = 'Th' AND "movies"."id" != 11) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 222ms
+
+ActiveRecord::RecordInvalid (Validation failed: Title is too short (minimum is 3 characters)):
+  app/controllers/movies_controller.rb:25:in `update'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (9.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.8ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (93.2ms)
+
+
+Started PUT "/movies/11" for 127.0.0.1 at 2014-03-21 17:27:45 -0400
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V1cw21V11YVEiKbag0IhwC/hOzOmjT6xyyzQSj/x0kY=", "movie"=>{"title"=>"Th", "rating"=>"PG", "release_date(1i)"=>"1929", "release_date(2i)"=>"4", "release_date(3i)"=>"2", "description"=>""}, "commit"=>"Update Movie", "id"=>"11"}
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", "11"]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mMovie Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "movies" WHERE ("movies"."title" = 'Th' AND "movies"."id" != 11) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+Completed 422 Unprocessable Entity in 24ms
+
+ActiveRecord::RecordInvalid (Validation failed: Release date must be 1930 or later, Title is too short (minimum is 3 characters)):
+  app/controllers/movies_controller.rb:25:in `update'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (10.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (95.7ms)
+
+
+Started GET "/movies/11" for 127.0.0.1 at 2014-03-21 17:27:50 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", "11"]]
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.1. Use 'data: { confirm: 'Text' }' instead. (called from _app_views_movies_show_html_haml__862748749_86278770 at /home/bhawna/fresh-tomato1/app/views/movies/show.html.haml:21)
+  Rendered movies/show.html.haml (15.9ms)
+Completed 200 OK in 39ms (Views: 27.8ms | ActiveRecord: 0.4ms)
